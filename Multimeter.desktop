@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Multimeter USB/TCP
+Comment=
+Exec=python3 /home/USER_NAME/Multimeter/Multimeter-TCP.py
+Icon=/home/USER_NAME/Multimeter/P409x.ico
+Path=/home/USER_NAME/Multimeter
+Terminal=false
+StartupNotify=true

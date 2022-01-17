@@ -1,0 +1,117 @@
+Step 1. Install software and dependencies for Debian 11 and raspios-bullseye:
+
+open Console:
+
+unzip /path/to/Multimeter.zip -d ~/
+
+cd ~/Multimeter
+
+sudo apt-get install qtcreator
+sudo apt-get install pyqt5-dev-tools
+sudo apt-get install python3-pip
+sudo pip3 install pyusb
+sudo pip3 install -U pyvisa
+sudo pip3 install pyvisa-py
+
+sudo apt-get install python3-xlsxwriter
+sudo apt-get install python3-pyqtgraph
+
+sudo pip3 install pyuic5-tool
+pyuic5
+Error: one input ui-file must be specified          # all OK, pyuic5 is working !
+
+designer --help     # check Qt-Designer Version, on DEBIAN 11 and raspios-bullseye there is nothing to do.
+# If Qt-Designer is not 5.15.2 - DEBIAN 10 Qt Version is 5.11.3
+designer default.ui
+...and save without changes !
+
+nano multimeter.ini
+
+sudo cp 99-usbtmc.rules /etc/udev/rules.d
+
+cd /var/cache/apt/archives
+ls -l *.deb
+sudo rm *.deb
+
+sudo reboot    # or
+exit           # restart over DESKTOP.
+-------------------------------------------
+Step 2. Check Software
+
+open Console:
+
+# plug in DMM USB.
+sudo dmesg
+[ 5736.801890] usb 1-1: new high-speed USB device number 17 using xhci_hcd
+[ 5736.950767] usb 1-1: New USB device found, idVendor=5345, idProduct=1234, bcdDevice= 1.00
+[ 5736.950773] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[ 5736.950777] usb 1-1: Product: xxxxxxx
+[ 5736.950779] usb 1-1: Manufacturer: xxxx
+[ 5736.950782] usb 1-1: SerialNumber: xxxxxxx
+
+ls -l /dev/usbtmc*
+crw-rw-rw- 1 root dialout 180, 0 20. Nov 13:51 /dev/usbtmc0
+
+# USB/TCP connection
+cd ~/Multimeter
+python3 Multimeter-TCP.py
+
+# RS232 connection
+nano multimeter.ini
+python3 Multimeter-RS232.py
+
+###################################################
+#####  If group of /dev/usbtmc is not dialout #####
+sudo groupadd dialout
+
+if user has no access to /dev/usbtmc, add user to group dialout 
+sudo usermod -a -G dialout your_username
+
+sudo reboot    # or
+exit           # restart over Desktop.
+##### #####
+
+###################################################
+##### if numpy or pygtgraph ERROR             #####
+pip3 show numpy
+
+dpkg --list | grep numpy
+sudo apt-get remove python-numpy
+sudo apt-get remove python3-numpy
+
+sudo pip3 uninstall numpy
+sudo pip3 show numpy
+sudo pip3 uninstall pyqtgraph
+sudo apt-get install python3-pyqtgraph       # or sudo apt-get install python-pyqtgraph
+
+##### #####
+
+------------------------------------------------
+PYVISA SHELL
+martin@intel-nuc:~$ pyvisa-shell
+
+Welcome to the VISA shell. Type help or ? to list commands.
+
+(visa) list
+( 0) USB0::21317::4660::xxxxxxx::0::INSTR
+(visa) open 0
+USB0::21317::4660::xxxxxxx::0::INSTR has been opened.
+You can talk to the device using "write", "read" or "query".
+The default end of message is added to each message.
+(open) query *IDN?
+Response: PEAK,P4095,xxxxxxx,V2.18.0,1
+
+(open) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  attr  close  exit  help  list  open  query  read  termchar  timeout  write
+
+(open) close
+The resource has been closed.
+(visa) exit
+
+Welcome to the VISA shell. Type help or ? to list commands.
+
+(visa) exit
+
