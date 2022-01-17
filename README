@@ -2,7 +2,7 @@ Step 1. Install software and dependencies for Debian 11 and raspios-bullseye:
 
 open Console:
 
-unzip /path/to/Multimeter.zip -d ~/
+git clone https://github.com/martin-bochum/Multimeter.git
 
 cd ~/Multimeter
 
