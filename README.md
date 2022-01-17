@@ -1,8 +1,12 @@
 # Digital-Multimeter-Control
-Digital Multimeter Control USB/TCP/RS232\n
+Digital Multimeter Control USB/TCP/RS232
+
 Linux/Debian/RaspiOS
+
 Owon XDM2041, XDM3041, XDM3051
+
 PeakTech P4094, P4095, P4096
+
 VOLTCRAFT VC-7055BT, VC-7060BT, VC-7200BT
 
 ![Screenshot_20220117_113127](https://user-images.githubusercontent.com/97905711/149811740-71f5b2ec-fbcb-4c65-926e-b966dfc12568.png)
