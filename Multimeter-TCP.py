@@ -366,8 +366,9 @@ class Ui(QtWidgets.QMainWindow):
             return
         if einheitdc == "1":
             leer = self.tcpip('FUNCtion1 \"CURRent:DC\"')
+            sleep(.5)
             leer = self.tcpip('CURRent:DC:FILTer:STATe OFF')
-            sleep(1)
+            sleep(.5)
             if einheit == "VOLT":
                 leer = self.tcpip('FUNCtion1 \"VOLTage:DC\"')
             elif einheit == "CURR":
@@ -375,8 +376,9 @@ class Ui(QtWidgets.QMainWindow):
             self.actionCurrent_DC_Filter.setChecked(False)
         elif einheitdc == "0":
             leer = self.tcpip('FUNCtion1 \"CURRent:DC\"')
+            sleep(.5)
             leer = self.tcpip('CURRent:DC:FILTer:STATe ON')
-            sleep(1)
+            sleep(.5)
             if einheit == "VOLT":
                 leer = self.tcpip('FUNCtion1 \"VOLTage:DC\"')
             elif einheit == "CURR":
