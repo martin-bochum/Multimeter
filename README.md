@@ -1,4 +1,4 @@
-# Digital-Multimeter-Control
+# Linux/Debian SCPI Digital Multimeter Control
 Digital Multimeter Control USB/TCP/RS232
 
 Linux/Debian/RaspiOS
