@@ -7,7 +7,7 @@ Owon XDM2041, XDM3041, XDM3051<br>
 PeakTech P4094, P4095, P4096<br>
 VOLTCRAFT VC-7055BT, VC-7060BT, VC-7200BT<br>
 
-read README !
+read <font size="3"><a href="/README" target="_blank" >README</a> !
 
 ![Screenshot_20220117_113127](https://user-images.githubusercontent.com/97905711/149811740-71f5b2ec-fbcb-4c65-926e-b966dfc12568.png)
 ![Screenshot_20220117_113212](https://user-images.githubusercontent.com/97905711/149811759-2c05954f-9df6-4196-86ec-7297ec850718.png)
