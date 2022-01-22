@@ -74,7 +74,7 @@ def generate_sound(type, frequency, volume, duration):
 global ts, rad, einheit, durch, maxi, mini, reading, messungen, x, y, daten, line, p1, otto, otto1, einheit, pen, plot_label, HOST, PORT, SCREEN, LOCAL, ASRL, RS232_PORT, RS232_SPEED, s, socket_verbunden, dual_flag, dual, limit_switch, low_fail, up_fail, otto2, otto21, einheit2, reading2, dual_index, dual_index_alt, usb_switch, otto_alt, save_flag, save_timer, save_intervall, led_index, fileName, hugo, nk, wb_row, wb_col, wb_col2, format_date, format_time, workbook, worksheet, func_1, func_2, cold_boot, dmm4095, lower_val, upper_val, save_start, DEBUG, offset_bak, db_bak, rs_flag, messungen_alt, max_graph, xy_counter, resources, oscilloscope, instrument
 save_start = int(round(time.time()))
 rs_flag = "0"
-max_graph = 180
+max_graph = 300
 xy_counter = 0
 messungen_alt = 0
 lower_val = 0.0
@@ -477,6 +477,7 @@ class Ui(QtWidgets.QMainWindow):
         self.tcpip('CALCulate:NULL:OFFSet 0.00')
         self.tcpip('CALCulate:STATe OFF')
         self.debugger('Software Reset !')
+        leer = self.tcpip('RATE S')
         self.limit_off()
         self.stat_off()
 #        leer = self.tcpip('*IDN?')
