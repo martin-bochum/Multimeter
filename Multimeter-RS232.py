@@ -71,7 +71,7 @@ def generate_sound(type, frequency, volume, duration):
     p.terminate()
 '''
 
-global ts, rad, einheit, durch, maxi, mini, reading, messungen, x, y, daten, line, p1, otto, otto1, einheit, pen, plot_label, HOST, PORT, SCREEN, LOCAL, ASRL, RS232_PORT, RS232_SPEED, s, socket_verbunden, dual_flag, dual, limit_switch, low_fail, up_fail, otto2, otto21, einheit2, reading2, dual_index, dual_index_alt, usb_switch, otto_alt, save_flag, save_timer, save_intervall, led_index, fileName, hugo, nk, wb_row, wb_col, wb_col2, format_date, format_time, workbook, worksheet, func_1, func_2, cold_boot, dmm4095, lower_val, upper_val, save_start, DEBUG, offset_bak, db_bak, rs_flag, messungen_alt, max_graph, xy_counter, resources, oscilloscope, instrument
+global ts, rad, einheit, durch, maxi, mini, reading, messungen, x, y, daten, line, p1, otto, otto1, einheit, pen, plot_label, HOST, PORT, SCREEN, LOCAL, ASRL, RS232_PORT, RS232_SPEED, SN_SHOW, s, socket_verbunden, dual_flag, dual, limit_switch, low_fail, up_fail, otto2, otto21, einheit2, reading2, dual_index, dual_index_alt, usb_switch, otto_alt, save_flag, save_timer, save_intervall, led_index, fileName, hugo, nk, wb_row, wb_col, wb_col2, format_date, format_time, workbook, worksheet, func_1, func_2, cold_boot, dmm4095, lower_val, upper_val, save_start, DEBUG, offset_bak, db_bak, rs_flag, messungen_alt, max_graph, xy_counter, resources, oscilloscope, instrument
 save_start = int(round(time.time()))
 rs_flag = "0"
 max_graph = 300
@@ -109,6 +109,7 @@ DEBUG = 0
 SCREEN = "default.ui"
 LOCAL = 1
 ASRL = 0
+SN_SHOW = 1
 RS232_PORT = "/dev/ttyUSB1"
 RS232_SPEED = 115200
 poll_intervall = 250        # 250ms RS232
@@ -160,6 +161,7 @@ except IndexError:
     ASRL = config['hw_settings']['ASRL']
     RS232_PORT = config['hw_settings']['RS232_PORT']
     RS232_SPEED = config['hw_settings']['RS232_SPEED']
+    SN_SHOW = config['hw_settings']['SN_SHOW']
     print("multimeter.ini File: PORT=" + RS232_PORT + ", BAUD=" +  str(RS232_SPEED) + "\n")
 
 if 'blue' in SCREEN:
@@ -245,6 +247,10 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__(*args, **kwargs)
         uic.loadUi(SCREEN, self)        # Load the .ui file
         leer = self.tcpip('*IDN?')
+        if SN_SHOW == '0':
+            idn_text = []
+            idn_text = leer.split(',')
+            leer = leer.replace(str(idn_text[2]), "xxxxxxx")
         leer = leer.replace(",", " ")
         self.setFixedSize(745, 240)
         if usb_switch == 0:
