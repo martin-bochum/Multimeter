@@ -158,6 +158,7 @@ socket_verbunden = 0
 usb_switch = 0
 resources = visa.ResourceManager('@py')
 instruments = array(resources.list_resources())
+instrument = ''
 #    visa.log_to_screen() # enable pyvisa debug output to console
 for instrument in instruments:
     print("Checking: ", instrument)
@@ -227,7 +228,10 @@ class Ui(QtWidgets.QMainWindow):
         if usb_switch == 0:
             self.setWindowTitle(leer + " - " + HOST + ":" + str(PORT) + " TELNET")
         elif usb_switch == 1:
-            self.setWindowTitle(leer + " " + instrument)
+            if SN_SHOW == '0':
+                self.setWindowTitle(leer + " " + instrument.replace(str(idn_text[2]), "xxxxxxx"))
+            elif SN_SHOW == '1':
+                self.setWindowTitle(leer + " " + instrument)
         elif usb_switch == 2:
             self.setWindowTitle(leer + " " + instrument)
         leer = self.tcpip('SYSTem:VERSion?')
