@@ -2115,7 +2115,7 @@ DC</string>
      <rect>
       <x>282</x>
       <y>202</y>
-      <width>83</width>
+      <width>82</width>
       <height>34</height>
      </rect>
     </property>
@@ -2131,7 +2131,7 @@ DC</string>
    <widget class="QPushButton" name="pushButton_10">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>368</x>
       <y>202</y>
       <width>44</width>
       <height>34</height>
@@ -2149,7 +2149,7 @@ DC</string>
    <widget class="QPushButton" name="pushButton_11">
     <property name="geometry">
      <rect>
-      <x>462</x>
+      <x>460</x>
       <y>202</y>
       <width>84</width>
       <height>34</height>
@@ -3253,7 +3253,7 @@ AC</string>
    <widget class="QPushButton" name="pushButton_16">
     <property name="geometry">
      <rect>
-      <x>414</x>
+      <x>412</x>
       <y>202</y>
       <width>44</width>
       <height>34</height>
@@ -3356,7 +3356,7 @@ AC</string>
     <property name="geometry">
      <rect>
       <x>654</x>
-      <y>24</y>
+      <y>22</y>
       <width>88</width>
       <height>24</height>
      </rect>
